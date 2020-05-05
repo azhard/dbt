@@ -30,6 +30,8 @@
 
   {{ run_hooks(post_hooks, inside_transaction=False) }}
 
+  {% do persist_docs(relation, model) %}
+
   {{ return({'relations': [target_relation]}) }}
 
 {% endmaterialization %}

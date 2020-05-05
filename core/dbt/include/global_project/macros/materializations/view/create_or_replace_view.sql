@@ -59,6 +59,8 @@
       {{ run_hooks(post_hooks, inside_transaction=False) }}
   {% endif %}
 
+  {% do persist_docs(target_relation, model) %}
+
   {{ return({'relations': [target_relation]}) }}
 
 {% endmacro %}

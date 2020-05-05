@@ -12,19 +12,7 @@
   as (
     {{ sql }}
   );
-
-  {% set relation = relation.incorporate(type='table') %}
-  {{ set_relation_comment(relation) }}
-  {{ set_column_comments(relation) }}
 {%- endmacro %}
-
-
-{% macro postgres__create_view_as(relation, sql) %}
-  {{ default__create_view_as(relation, sql) }}
-  {%- set relation = relation.incorporate(type='view') -%}
-  {{ set_relation_comment(relation) }}
-  {{ set_column_comments(relation) }}
-{% endmacro %}
 
 {% macro postgres__create_schema(database_name, schema_name) -%}
   {% if database_name -%}
