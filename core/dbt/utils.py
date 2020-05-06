@@ -631,4 +631,3 @@ class MultiDict(Mapping[str, Any]):
 
     def __contains__(self, name) -> bool:
         return any((name in entry for entry in self._itersource()))
-
