@@ -632,11 +632,3 @@ class MultiDict(Mapping[str, Any]):
     def __contains__(self, name) -> bool:
         return any((name in entry for entry in self._itersource()))
 
-
-def sql_escape(string):
-    if not isinstance(string, str):
-        dbt.exceptions.raise_compiler_exception(
-            f'cannot escape a non-string: {string}'
-        )
-
-    return json.dumps(string)[1:-1]

@@ -20,7 +20,7 @@ from dbt.adapters.bigquery import BigQueryConnectionManager
 from dbt.contracts.connection import Connection
 from dbt.contracts.graph.manifest import Manifest
 from dbt.logger import GLOBAL_LOGGER as logger
-from dbt.utils import filter_null_values, sql_escape
+from dbt.utils import filter_null_values
 
 import google.auth
 import google.api_core
@@ -32,6 +32,16 @@ from google.cloud.bigquery import SchemaField
 
 import time
 import agate
+import json
+
+
+def sql_escape(string):
+    if not isinstance(string, str):
+        dbt.exceptions.raise_compiler_exception(
+            f'cannot escape a non-string: {string}'
+        )
+
+    return json.dumps(string)[1:-1]
 
 
 @dataclass
