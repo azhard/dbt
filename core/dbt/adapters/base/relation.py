@@ -503,16 +503,13 @@ class SchemaSearchMap(Dict[InformationSchema, Set[Optional[str]]]):
     """A utility class to keep track of what information_schema tables to
     search for what schemas
     """
-    def add(self, relation: BaseRelation, preserve_case=False):
+    def add(self, relation: BaseRelation):
         key = relation.information_schema_only()
         if key not in self:
             self[key] = set()
         schema: Optional[str] = None
         if relation.schema is not None:
-            if preserve_case:
-                schema = relation.schema
-            else:
-                schema = relation.schema.lower()
+            schema = relation.schema
         self[key].add(schema)
 
     def search(self) -> Iterator[Tuple[InformationSchema, Optional[str]]]:

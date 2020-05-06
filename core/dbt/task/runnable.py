@@ -441,9 +441,7 @@ class GraphRunnableTask(ManifestTask):
                 continue
             if node.is_refable and not node.is_ephemeral:
                 relation = adapter.Relation.create_from(self.config, node)
-                # we're going to be creating these schemas, so preserve the
-                # case.
-                search_map.add(relation, preserve_case=True)
+                search_map.add(relation)
 
         return search_map
 
