@@ -653,7 +653,7 @@ class BigQueryAdapter(BaseAdapter):
 
         if config.persist_relation_docs() and 'description' in node:
             description = sql_escape(node['description'])
-            opts['description'] = "'{}'".format(description)
+            opts['description'] = '"""{}"""'.format(description)
 
         if config.get('kms_key_name') is not None:
             opts['kms_key_name'] = "'{}'".format(config.get('kms_key_name'))

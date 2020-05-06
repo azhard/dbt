@@ -161,7 +161,7 @@
   {% endif %}
 
   {% if for_columns and config.persist_column_docs() %}
-    {% do run_query(alter_relation_comment(relation, model.columns)) %}
+    {% do run_query(alter_column_comment(relation, model.columns)) %}
   {% endif %}
 {% endmacro %}
 

@@ -117,7 +117,7 @@
 {#-- relation-level macro is not implemented. This is handled in the CTAs statement #}
 {% macro bigquery__persist_docs(relation, model, for_relation, for_columns) -%}
   {% if for_columns and config.persist_column_docs() %}
-    {% do run_query(alter_column_comment(relation, model.columns)) %}
+    {% do alter_column_comment(relation, model.columns) %}
   {% endif %}
 {% endmacro %}
 
